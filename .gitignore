@@ -1,0 +1,7 @@
+Docs/
+.ipynb_checkpoints
+*.png
+*.csv
+*.zip
+*.log
+* .docx
