@@ -1,7 +1,8 @@
-Docs/
-.ipynb_checkpoints
 *.png
-*.csv
+*.jpeg
 *.zip
-*.log
-* .docx
+*.docx
+*.pptx
+davi_env/
+.ipynb_checkpoints/
+Docs/
