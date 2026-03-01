@@ -77,7 +77,7 @@ The [Enhanced_Test.ipynb](Enhanced_Test.ipynb) introduces several improvements o
 | Aspect                      | Original                                            | Enhanced                                                                     |
 | --------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------- |
 | Variables removed pre-model | `Edad`, `Consumo`, `Vivienda` + row filtering | Automated 4-step selection pipeline (correlation, chi2, L1, F-Classifier)    |
-| Final feature count         | 16 (ordinal-encoded)                                | **34** (after full feature engineering + selection pipeline)           |
+| Final feature count         | 16 (ordinal-encoded)                                | **31** (after full feature engineering + selection pipeline)           |
 | `Edad`                    | Dropped entirely                                    | Kept indirectly via `age_euribor_ratio`, log-transform, and age bins        |
 | `Consumo`, `Vivienda`   | Dropped entirely                                    | One-hot encoded, then auto-dropped if low chi2 score                         |
 | Rows used for training      | ~25,385 (after filtering)                           | **26,373** (all rows preserved)                                        |
@@ -86,11 +86,11 @@ The [Enhanced_Test.ipynb](Enhanced_Test.ipynb) introduces several improvements o
 
 | Model                          | Original (ROC-AUC) | Enhanced (ROC-AUC)  |
 | ------------------------------ | ------------------ | ------------------- |
-| Logistic Regression (balanced) | 0.717              | **0.746**     |
-| Random Forest (balanced)       | 0.731              | **0.746**     |
-| Gradient Boosting (balanced)   | 0.719              | 0.738               |
-| XGBoost (balanced)             | 0.718              | 0.733               |
-| **Best overall**         | RF: 0.731          | **RF ≈ LR: 0.746** |
+| Logistic Regression (balanced) | 0.717              | 0.788               |
+| Random Forest (balanced)       | 0.731              | **0.796**     |
+| Gradient Boosting (balanced)   | 0.719              | 0.793               |
+| XGBoost (balanced)             | 0.718              | 0.792               |
+| **Best overall**         | RF: 0.731          | **RF: 0.796**       |
 
 ### Key Takeaways
 
@@ -98,4 +98,4 @@ The [Enhanced_Test.ipynb](Enhanced_Test.ipynb) introduces several improvements o
 2. **Richer feature engineering** (ratio features, log-transforms, binning) provided broader signal coverage, allowing all models to improve over the original
 3. **Preserving all rows** instead of aggressive filtering retained more training signal
 4. **Automated 4-step feature selection** (correlation → chi2 → L1 → F-Classifier) is more systematic and reproducible than manual inspection
-5. The enhanced notebook achieves a **+1.5 pp improvement** in best ROC-AUC (0.746 vs 0.731); RF and LR are essentially tied at the top, with Logistic Regression chosen as the final model
+5. The enhanced notebook achieves a **+6.5 pp improvement** in best ROC-AUC (0.796 vs 0.731); Random Forest is the best and final model across all configurations
